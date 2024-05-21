@@ -13,7 +13,7 @@ import at.htl.todo.util.resteasy.RestApiClientBuilder;
 @Singleton
 public class TodoService {
     static final String TAG = TodoService.class.getSimpleName();
-    public static String JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com";
+    public static String JSON_PLACEHOLDER_BASE_URL = "https://jsonplaceholder.typicode.com/todos";
     public final TodoClient todoClient;
     public final ModelStore store;
 
@@ -23,7 +23,6 @@ public class TodoService {
         todoClient = builder.build(TodoClient.class, JSON_PLACEHOLDER_BASE_URL);
         this.store = store;
     }
-
     public void getAll() {
         CompletableFuture
                 .supplyAsync(() -> todoClient.all())
